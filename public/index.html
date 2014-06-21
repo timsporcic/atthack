@@ -17,18 +17,27 @@
 </head>
 <body>
   <div data-role="page" data-control-title="Home" id="page1">
+
       <div data-theme="a" data-role="header">
           <h3>
               Sign Wiz
           </h3>
       </div>
+      <form action="/hack/upload" method="post" enctype="multipart/form-data">
       <div data-role="content">
           <div data-role="fieldcontain" data-controltype="camerainput">
+            
               <label for="camerainput3">
                   Capture Sign
               </label>
-              <input type="file" name="" id="camerainput3" accept="image/*" capture="camera">
+              <input type="file" name="fileUploaded" id="fileUploaded" accept="image/*" capture="camera">
+              
           </div>
+          <div data-role="content">
+         
+            <canvas id="imageCanvas" ></canvas>
+        </div>
+
           <div data-role="fieldcontain" data-controltype="radiobuttons">
               <fieldset data-role="controlgroup" data-type="vertical">
                   <legend>
@@ -56,13 +65,14 @@
                   </label>
               </fieldset>
           </div>
-          <input type="submit" value="Translate Sign">
+          <input type="submit" value="Translate Sign" id="wtf">
           <div data-role="fieldcontain" data-controltype="textarea">
               <label for="textarea1">
                   Translation Text
               </label>
               <textarea name="" id="textarea1" placeholder=""></textarea>
           </div>
+        </form>
       </div>
   </div>
 </body>

@@ -22,8 +22,9 @@ function createTiff(req) {
 
     form.parse(req, function (err, fields, files) {
         console.log("form.bytesReceived");
+        console.log("files:\t " + util.inspect(files));
         //TESTING
-        console.log("file size: " + (files.fileUploaded.size));
+        console.log("file size: " + JSON.stringify(files.fileUploaded.size));
         console.log("file path: " + JSON.stringify(files.fileUploaded.path));
         console.log("file name: " + JSON.stringify(files.fileUploaded.name));
         console.log("file type: " + JSON.stringify(files.fileUploaded.type));
