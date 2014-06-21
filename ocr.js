@@ -7,6 +7,7 @@ function parseImage(imgFileName) {
     var deferred = when.defer();
 
     if(!fs.existsSync(imgFileName)) {
+        console.log("File does not exist::" + imgFileName);
 
         deferred.reject( "Image file does not exist: " + imgFileName );
 

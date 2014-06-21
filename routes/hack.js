@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var express = require('express');
-var image= require(../image.js);
+var image= require('../image');
+var ocr = require('../ocr');
+var util = require('util');
 
 
 /* GET home page. */
@@ -16,15 +17,19 @@ router.post('/upload',function(req,res){
     console.log(req.files);
 	console.log('Request File\n' + util.inspect(req.files));
 
-	image.createTiff(req).then(function(file){
+	image.convertImage(req).then(function(file){
 
-		//dosomething
-		console.log("Converted File:\t"+file);
+        console.log("***File name: " + file);
+
+        ocr.parseImage(file).then(function(text){
+
+            res.send(text);
+        });
+
 	},function(err) {
 		throw errr;	
 
-	});  
-res.send('Hello World');
+	});
 });
 
 
