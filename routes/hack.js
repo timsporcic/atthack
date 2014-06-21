@@ -3,6 +3,7 @@ var router = express.Router();
 var image= require('../image');
 var ocr = require('../ocr');
 var util = require('util');
+var googleTranslate = require('google-translate')('AIzaSyBxsyOG0KqoenUpgsPfRo7xrCPbmbhDA1o');
 
 
 /* GET home page. */
@@ -22,8 +23,14 @@ router.post('/upload',function(req,res){
         console.log("***File name: " + file);
 
         ocr.parseImage(file).then(function(text){
+              console.log("Text to Translate:\t"+text);
+        	googleTranslate.translate(text, 'en', function(err, translation) {
+					  console.log("Transated Text:\t"+translation);
+					      res.send(translation);
+					  // =>  { translatedText: 'Hallo', originalText: 'Hello', detectedSourceLanguage: 'en' }
+					});
 
-            res.send(text);
+        
         });
 
 	},function(err) {

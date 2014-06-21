@@ -18,6 +18,7 @@
     "fs-extra": "^0.9.1",
     "imagemagick": "~0.1.3",
     "node-tesseract": "*",
+    "google-translate": "*",
     "when": "*"
   }
 }
